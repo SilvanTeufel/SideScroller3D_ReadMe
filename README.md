@@ -175,10 +175,10 @@ Widget Setup
 |IsAttacked UMETA(DisplayName = "IsAttacked") ,     		| CharAnimState = IsAttacked  |
 |Dead UMETA(DisplayName = "Dead"),   				| CharAnimState = Dead        |
 |Reload UMETA(DisplayName = "Reload"),   			| CharAnimState = Reload        |
-|TeleportStart UMETA(DisplayName = "TeleportStart"),   		| CharAnimState = TeleportStart        |
-|TeleportEnd UMETA(DisplayName = "TeleportEnd"),   		| CharAnimState = TeleportEnd        |
-|PrepareScatterMine UMETA(DisplayName = "PrepareScatterMine"),  | CharAnimState = PrepareScatterMine        |
-|PrepareMouseBot UMETA(DisplayName = "PrepareMouseBot"),   	| CharAnimState = PrepareMouseBot        |
+|TeleportStart UMETA(DisplayName = "TeleportStart"),   		| CharAnimState = TeleportStart  (Will be implemented later) |
+|TeleportEnd UMETA(DisplayName = "TeleportEnd"),   		| CharAnimState = TeleportEnd   (Will be implemented later)|
+|PrepareScatterMine UMETA(DisplayName = "PrepareScatterMine"),  | CharAnimState = PrepareScatterMine (Will be implemented later) |
+|PrepareMouseBot UMETA(DisplayName = "PrepareMouseBot"),   	| CharAnimState = PrepareMouseBot   (Will be implemented later)|
 |NoMana UMETA(DisplayName = "NoMana"),   			| CharAnimState = NoMana        |
 |None UMETA(DisplayName = "None"),    				| Should not happen	      |
 
@@ -236,32 +236,50 @@ Widget Setup
 |void SetSelected();       					| Sets the SelectedIcon selected           	|
 |void SetDeselected();      					| Sets the SelectedIcon delected            	|
 |void SpawnSelectedIcon();       				| Spawns the SelectedIcon         		|	
-
+|void SpawnGlider();							| Time Spent in UnitState NoMana			   	|
+|void DeSpawnGlider();							| Time Spent in UnitState NoMana			   	|
 	
 # ExtendedUnitBase
 
 |Properties (EditAnyWhere + BlueprintReadWrite)                  	|Note                         |
 |-----------------------------------------------------------------------|-----------------------------|
-|float TeleportStartTime = 1.f;         				| Time Spent in UnitState TeleportStart      			|
-|float TeleportEndTime = 0.5f;          				| Time Spent in UnitState TeleportEnd	         		|
-|float TeleportRadius = 70.f;						| Radius which is allowed to Teleport		 		|
-|float TeleportFailedDmg = 10.f;       					| Dmg recived when Teleporting out of Radius			|
-|float TeleportManaCost = 30.f;        					| Mana Cost when using Teleport					|
+|float TeleportStartTime = 1.f;         				| Time Spent in UnitState TeleportStart (Will be implemented later)|
+|float TeleportEndTime = 0.5f;          				| Time Spent in UnitState TeleportEnd (Will be implemented later)|
+|float TeleportRadius = 70.f;						| Radius which is allowed to Teleport	 (Will be implemented later)|
+|float TeleportFailedDmg = 10.f;       					| Dmg recived when Teleporting out of Radius (Will be implemented later)|
+|float TeleportManaCost = 30.f;        					| Mana Cost when using Teleport	 (Will be implemented later)|
 |TSubclassOf<class AWeaponBase> WeaponClass;				| Choose BP_WeaponBase Class (And add Weapontable in BP_WeaponBase)|	
 |TSubclassOf<class AScatterMine> ScatterMineBaseClass;			| Choose BP_ScatterMine Class (which has also Details to change)|
 |TSubclassOf<class AShield> ShieldBaseClass;     			| Choose BP_Shield Class (which has also Details to change)	|
 |TSubclassOf<class AMouseBotBase> MouseBotBaseClass;         		| Choose BP_MouseBotBase Class (which has also Details to change) |
-|float MouseBotCastTime = 0.4f;         				| Time Spent in UnitState PrepareMouseBot        		|
-|float MouseBotRadius = 15.f;      					| Radius where the MouseBot can be spawned	        	|
-|float BotManaCost = 5.f;						| Mana Cost to Spawn a Mousebot					|
+|float MouseBotCastTime = 0.4f;         				| Time Spent in UnitState PrepareMouseBot  (Will be implemented later)|
+|float MouseBotRadius = 15.f;      					| Radius where the MouseBot can be spawned (Will be implemented later)|
+|float BotManaCost = 5.f;						| Mana Cost to Spawn a Mousebot	 (Will be implemented later)|
 |class UWidgetComponent* HealthWidgetComp;          			| Choose the WidgetComp for the HealthBar (BP_UnitBaseHealthBar)|
 |float MaxMana = 100.f;        						| Max Mana of the Character					|
 |float ManaRestore = 1.f;						| This amount gets Restored each Time ManaRestoreTime is reached|
 |float ManaRestoreTime = 1.f;    					| ManaRestore gets added to Mana when ManaRestoreTime is reached|
-|float NoManaTime = 1.5f;						| Time Spent in UnitState NoMana			   	|
+|float JumpTime = 0.5f;							| Time Spent in UnitState NoMana			   	|
+|float JumpPauseTime = 0.1f;						| Time Spent in UnitState NoMana			   	|
+|float JumpLoad = 0.f;							| Time Spent in UnitState NoMana			   	|
+|float JumpLoadIncrement = 2000.f;					| Time Spent in UnitState NoMana			   	|	
+|float MaxJumpLoad = 2000.f;						| Time Spent in UnitState NoMana			   	|
+|float JumpIconScaleDivider = 550.f;					| Time Spent in UnitState NoMana			   	|
+|float JumpLoadOffset = 100.f;						| Time Spent in UnitState NoMana			   	|
+|int JumpCounter = 0.f;							| Time Spent in UnitState NoMana			   	|
+|float JumpCounterResetTime = 6.f;					| Time Spent in UnitState NoMana			   	|
+|float JumpCounterTime = 0.f;						| Time Spent in UnitState NoMana			   	|
+|int MaxJumps = 3.f;							| Time Spent in UnitState NoMana			   	|
+|TSubclassOf<class AScatterMine> JumpMineClass;				| Time Spent in UnitState NoMana			   	|
+|float JumpMineSpawnDelta = 0.3f;					| Time Spent in UnitState NoMana			   	|
+|bool DropJumpMine = false;						| Time Spent in UnitState NoMana			   	|
+|TSubclassOf<class AGlider> GliderBaseClass;				| Time Spent in UnitState NoMana			   	|
+|class AGlider* Glider;							| Time Spent in UnitState NoMana			   	|
+|FVector GliderSpawnOffset = FVector(0, 0, -40);			| Time Spent in UnitState NoMana			   	|
+|bool GliderSpawned = false;						| Time Spent in UnitState NoMana			   	|
+|FVector JumpLocation;						| Time Spent in UnitState NoMana			   	|
 
 	
-
 |Properties (BlueprintReadWrite)                  		|Note                         |
 |---------------------------------------------------------------|-----------------------------|
 |class AWeaponBase* Weapon;       				| The Pointer to the Weapon             |
@@ -272,6 +290,10 @@ Widget Setup
 |UMaterialInterface* ProjectileMaterial;			| Comes from DataTable 			|
 |UStaticMesh* ProjectileMesh;					| Comes from DataTable 			|
 |FVector TeleportLocation;					| Current Location where to Teleport - comes from ControllerBase |	
+|float XAxisFixedPosition;					| Time Spent in UnitState NoMana			   	|
+|float YAxisFixedPosition;					| Time Spent in UnitState NoMana			   	|
+|FVector JumpLocation;						| Time Spent in UnitState NoMana			   	|
+	
 	
 |Functions (BlueprintCallable)                  		|Note                         |
 |---------------------------------------------------------------|-----------------------------|
