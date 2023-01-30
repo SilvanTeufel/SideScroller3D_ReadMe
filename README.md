@@ -307,39 +307,39 @@ Widget Setup
 
 |Properties (EditAnyWhere + BlueprintReadWrite)                  	|Note                         |
 |-----------------------------------------------------------------------|-----------------------------|
-|float Margin = 15;       						| Margin the ScreenSize where Camera-Mouse-Movement gets toggled	|
+|USceneComponent* RootScene;      				| Pointer to the RootScene     	|
+|USpringArmComponent* SpringArm;				| Pointer to the SpringArm 	|
+|Rotator SpringArmRotator = FRotator(-50, 0, 0);     		| Rotation of the SpringArm	|
+|UCameraComponent* CameraComp;          			| Pointer to the CameraComp     |
+|UInputMappingContext* MappingContext;          		| Check Controls Folder     |
+|int32 MappingPriority;			         		| Check Controls Folder     |
+|float CameraDistanceToCharacter;    					| Margin the ScreenSize where Camera-Mouse-Movement gets toggled	|	
 |int GetViewPortScreenSizesState = 1;         				| Choose 1 or 2  to set SetViewPortScreenSizes 2 uses GSystemResolution |
 |float CamSpeed = 80;							| Choose the Speed of the Camera					|
+|float ZoomSpeed = 80;							| Choose the Speed of the Camera					|
 |float ZoomOutPosition = 20000.f;       				| The Position the Camera should stop when Zooming out fast (Press Space)|
 |float ZoomPosition = 1500.f;         					| The Position where Camera should stop when Zooming in again (Standard Position) |
 |class UWidgetComponent* ControlWidgetComp;				| Used when Tab gets pressed to show Control Shortcuts			|	
 |FRotator ControlWidgetRotation = FRotator(50, 180, 0);       		| Change the Rotation of the Control-Widget           |
 |FVector ControlWidgetLocation = FVector(400.f, -100.0f, -250.0f);      | Change the Location of the Control-Widget           |
 |FVector ControlWidgetHideLocation = FVector(400.f, -2500.0f, -250.0f); | Change the Location of the Control-Widget if it is hidden           |
-
-
-|Properties (BlueprintReadWrite)                  		|Note                         |
-|---------------------------------------------------------------|-----------------------------|
-|USceneComponent* RootScene;      				| Pointer to the RootScene     	|
-|USpringArmComponent* SpringArm;				| Pointer to the SpringArm 	|
-|Rotator SpringArmRotator = FRotator(-50, 0, 0);     		| Rotation of the SpringArm	|
-|UCameraComponent* CameraComp;          			| Pointer to the CameraComp     |
-|APlayerController* PC;						| Pointer to the PlayerController |
-|int32 ScreenSizeX;						| This is set by SetViewPortScreenSizes |
-|int32 ScreenSizeY;						| This is set by SetViewPortScreenSizes |
 |float PitchValue = 0.f;					| Used for Rolling Cam |
 |float YawValue = 0.f;						| Used for Rolling Cam |
 |float RollValue = 0.f;						| Used for Rolling Cam |
-|bool RollCamRight = false;					| Is set to Roll Cam in Tick|
-|bool RollCamLeft = false;					| Is set to Roll Cam in Tick|
-|bool ZoomCamOut = false;					| Is set to Zoom Cam in Tick|
-|bool ZoomCamIn = false;					| Is set to Zoom Cam in Tick|
-|bool ZoomCamOutToPosition = false;				| Is set to Zoom Cam to ZoomOutPosition in Tick|
-|bool MoveCamForward = false;					| Is set to Move Cam in Tick|
-|bool MoveCamBackward = false;					| Is set to Move Cam in Tick|
-|bool MoveCamLeft = false;					| Is set to Move Cam in Tick|
-|bool MoveCamRight = false;					| Is set to Move Cam in Tick|
-|int CamAngle = 0;						| Current Cam Angle|
+|float ZoomXYDistance = 0.f;					| - |
+|float CamZOffset =800.f;					| - |
+|float LastActorZeroPosition = 0.f;				| - |
+|float DeltaZScaler = 2.f;					| - |
+|float DeltaDecrementer = 1.f;					| - |
+|float ZoomThirdPersonPosition = 600.f;				| - |
+|float CamRotationOffset = 11.5f;				| - |
+|float CameraAngles[4] = { 0.f, 90.f, 180.f, 270.f };		| - |
+
+|Properties (BlueprintReadWrite)                  		|Note                         |
+|---------------------------------------------------------------|-----------------------------|
+|APlayerController* PC;						| Pointer to the PlayerController |
+|loat RotationDegreeStep = 90.f;				|- |
+
 	
 |Functions (BlueprintCallable)                  		|Note                         |
 |---------------------------------------------------------------|-----------------------------|
@@ -350,20 +350,28 @@ Widget Setup
 |void PanMoveCamera(const FVector& PanDirection);		| Move Camera via ScreenEdges            |
 |void ZoomIn();      						| Zoom In          |
 |void ZoomOut();    						| Zoom Out          |
-|void ZoomStop();      						| Zoom Stop            |
-|void CamLeft();    						| Move Cam Left          |
-|void CamRight();      						| Move Cam Right           |
-|void CamStop();   						| Stop Cam Move           |
-|void CamRotationTick();      					| Used in Tick to Rotate Cam            |
-|void JumpCamera(FHitResult Hit);    				| Jump Camera to Hit Location          |
-|FVector2D GetMousePos2D();   					| Get Mouse 2D Position          |
-|void Zoom();      						| Zoom Camera           |
-|void ZoomOutToPosition();      				| Zoom out to ZoomCamOutToPosition |
-|void CamMoveAndZoomTick();    					| Move and Zoom used in Tick          |
-|void ZoomInToPosition();     					| Zoom Back In           |
+|void MoveCamToForward();      					| - |
+|void MoveCamToBackward();    					| - |
+|void MoveCamToRight();      					| - |
+|void CamStop();   						| - |
+|void CamRotationTick();      					| - |
+|void JumpCamera(FHitResult Hit);    				| - |
+|FVector2D GetMousePos2D();   					| - |
+|void ZoomOutToPosition(float Distance, const FVector SelectedActorPosition = FVector(0.f,0.f,0.f));     | Zoom out to Entered Position |
+|bool IsCharacterDistanceTooLow(float Distance, const FVector SelectedActorPosition = FVector(0.f,0.f,0.f));   | Move and Zoom used in Tick          |
+|bool ZoomInToPosition(float Distance, const FVector SelectedActorPosition = FVector(0.f,0.f,0.f));   	| Zoom Back In           |
 |void LockOnUnit(AUnitBase* SelectedActor);      		| Lock Camera on a Unit          |
 |void HideControlWidget();      				| Sets the Control Widget Location        |
 |void ShowControlWidget();     					| Sets the Control Widget Hide Location           |
+|bool RotateCamLeftTo(float Position);   			| - |
+|bool RotateCamRight(bool UseCamRotationOffset);		| - |
+|void JumpCamera(FHitResult Hit);   				| - |
+|FVector2D GetMousePos2D();     				| - |
+|void LockOnUnit(AUnitBase* SelectedActor);      		| - |
+|void HideControlWidget();      				| Sets the Control Widget Location        |
+|void ShowControlWidget();     					| Sets the Control Widget Hide Location           |
+	
+	
 	
 	
 # UnitControllerBase
