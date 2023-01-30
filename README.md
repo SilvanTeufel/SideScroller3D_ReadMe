@@ -8,7 +8,7 @@ This Documentation is still in Work, and will update on daily baseses.
 https://www.unrealengine.com/marketplace/en-US/profile/Silvan+Teufel
 
 If you have downloaded the plugin it can be found in your Unreal Engine folder:
-C:\Program Files\Epic Games\UE_5.0\Engine\Plugins\TopDownRTSTemplate (for example)
+C:\Program Files\Epic Games\UE_5.0\Engine\Plugins\SideScroller3D (for example)
 If you can find this folder in your enginge plugins folder the download was successful.
 If the plugin is in another folder, you should copy it here.
 
@@ -21,7 +21,6 @@ Search for TopDownRTSTemplate and put a check mark at it.
 
 RTSUnitTemplate/Document/Description_Backup_2022-11-14_102425_RTSUnitTemplate.ini
 RTSUnitTemplate/Document/Gameplay_Debugger_Backup_2022-11-14_102535_RTSUnitTemplate.ini
-RTSUnitTemplate/Document/Input_Backup_2022-11-14_102458_RTSUnitTemplate.ini (Deprecated, use Enhanced Keyboard Settings)
 RTSUnitTemplate/Document/Maps_&_Modes_Backup_2022-11-14_102333_RTSUnitTemplate.ini
 
 ## Enhanced Keyboard Settings
@@ -36,7 +35,7 @@ Go to ProjectSettings->Input and set EnhancedIputComponentBase:
 
 ![image](https://user-images.githubusercontent.com/45244380/211891263-032cfbc6-120c-40f3-82f6-b1d7cff938a3.png)
 
-YOu can set MappingContext and ControlAsset in the BP_CameraBase:
+You can set MappingContext and ControlAsset in the BP_CameraBase:
 
 ![image](https://user-images.githubusercontent.com/45244380/212332329-42eaec24-7096-4728-8c8a-ede7846c0efc.png)
 
@@ -55,22 +54,22 @@ You can also add a Preview Asset and Rotate/Move the Weapon according to its bes
 ## Test Example Map
 
 Open Unreal Editor. Open folder (In Unreal Editor folder tab):
-All\Engine\Plugins\TopDownRTSTemplate\Content\TopDownRTSTemplate\Level\levelOne
+All\Engine\Plugins\SideScroller3D\Content\SideScroller3D\Level\levelOne
 
 Open Unreal Editor. Open folder (In Unreal Editor folder tab):
-All\Engine\Plugins\TopDownRTSTemplate\Content\TopDownRTSTemplateLevel\levelTwo
+All\Engine\Plugins\SideScroller3D\Content\SideScroller3D\levelTwo
 
 ## Example Blueprints
 
 Your can find example Blueprints in the Unreal Editor as well:
-All\Engine\Plugins\TopDownRTSTemplate\Content\TopDownRTSTemplate\Blueprints
+All\Engine\Plugins\SideScroller3D\Content\SideScroller3D\Blueprints
 
-This Blueprints use the Parent Classes from TopDownRTSTemplate Plugin, which you can use for your Blueprints.
+This Blueprints use the Parent Classes from SideScroller3D Plugin, which you can use for your Blueprints.
 
 ## Parent Classes
 
-If TopDownRTSTemplate is installed the Classes can be used as Parent Class in Blueprint, so all functions from this Class are available.
-Just use one of the following Classes as Parent Class and or just choose them in your GameMode Blueprint. Category = TopDownRTSTemplate. 
+If SideScroller3D is installed the Classes can be used as Parent Class in Blueprint, so all functions from this Class are available.
+Just use one of the following Classes as Parent Class and or just choose them in your GameMode Blueprint. Category = SideScroller3D. 
 
 Parentclasses are:
 
@@ -80,6 +79,7 @@ Actors:
 - ScatterBall
 - ScatterMine
 - SelectedIcon
+- Glider
 - Shield
 - UIWeaponIndicator
 - Waypoint
@@ -96,12 +96,13 @@ Characters:
 
 Controller:
 - ControllerBase (Your Soul)
+- CameraControllerBase (Child of ControllerBase)
 - UnitControllerBase (Soul of the UnitBase)
 - ExtendedUnitControllerBase (Extends the Soul of the UnitBase for the ExtendedUnitBase)
-- MouseBotControllerBase (Soul of the MouseBot)
+- MouseBotControllerBase (Soul of the MouseBot)(Not Implemented yet, will be setup in coming Patches)
 
 GameMode:
-- ComponentGeneratorGameMode (Can be used for Random Level Generator and Mob-Spawning - see LevelTwo)
+- ComponentGeneratorGameMode (Not Implemented yet, will be setup in coming Patches)
 
 Hud:
 - HUDBase
@@ -123,40 +124,40 @@ Here is a List of the Classes and there Functions:
 1. Right Click inside the Content Browser inside the Unreal Editor -> Create Blueprint
 2. Go to "ALL CLASSES" Section and tipe the Name of the Parent Class inside the Search (Choose one of the ParentClasses)
 3. Click on Select
-4. Go in the Details Penal of you BP_Class and Type "RTS" into the Search
+4. Go in the Details Penal of you BP_Class and Type "SideScroller3D" into the Search
 
 BP_UnitBase Setup
-1. For Character choose a Skeletal Mesh and a Animation Blueprint (there are Example Animation Blueprints in the Blueprint Folder All\Engine\Plugins\TopDownRTSTemplate\Content\TopDownRTSTemplate\Blueprints\Animations)
+1. For Character choose a Skeletal Mesh and a Animation Blueprint (there are Example Animation Blueprints in the Blueprint Folder All\Engine\Plugins\SideScroller3D\Content\SideScroller3D\Blueprints\Animations)
 2. Adapt the Trigger Capsule to the Mesh
 3. If you need a new Animation Blueprint for your Mesh Create it -> Right Click -> Animations -> Animation Blueprint
-4. Copy the Statemachine from my Example Animations Blueprints (All\Engine\Plugins\SwarmSimulator\Content\TopDownRTSTemplate\Blueprints\Animations)
+4. Copy the Statemachine from my Example Animations Blueprints (All\Engine\Plugins\SideScroller3D\Content\SideScroller3D\Blueprints\Animations)
 5. Go through all States and change the Animation.
 6. Check if the Transition Rules are Setup Correctly. If not you can easily choose the right state from a dropdown.
-7. Check Details of the Blueprint by Typing SwarmSimulator in the Search.
+7. Check Details of the Blueprint by Typing SideScroller3D in the Search.
 8. Use Functions and Variables in EvenGraph and Construction Script. Or just use the Parent Class as it is.
 9. Choose the AI Controller for the Unit
 
 BP_UnitBaseController
-1. When created the Blueprint u can just adapt the Details Panel by Typing in Search "TopDownRTSTemplate"
+1. When created the Blueprint u can just adapt the Details Panel by Typing in Search "SideScroller3D"
 2. Choose the BP_UnitBaseController in your BP_UnitBase under "Ai Controller"
 
 Character Animation Statemachine
 1. Right Click Create Animation -> Animation Blueprint
 2. Choose Parent Class of the CharacterBase -> CharacterBaseAnimInstance / EnemyBase -> EnemyBaseAnimInstance / MouseBotBase -> MouseBotBaseAnimInstance
 3. Choose Skeleton
-4. Copy Statemachine from (All\Engine\Plugins\SwarmSimulator\Content\SwarmSimulator\Blueprints\Animations)
+4. Copy Statemachine from (All\Engine\Plugins\SideScroller3D\Content\SideScroller3D\Blueprints\Animations)
 5. You can change the Time the Unit stuck in the Animation. This will also change Gameplay. To Adjust the Animation Times take a Look into the ControllerBase properties.
 
 HUD/Actor Setup
 1. Create a Blueprint like mentioned above.
-2. Type "TopDownRTSTemplate" in Search Details.
+2. Type "SideScroller3D" in Search Details.
 3. Use Functions and Variables in EvenGraph and Construction Script. Or just use the Parent Class as it is.
 
 
 Widget Setup
 1. Widgets have to be choosen inside the Blueprints of a Character
-2. Example Widgets are at (All\Engine\Plugins\RTSUnitTemplate\Content\RTSUnitTemplate\Blueprints\Widgets)
-3. Example Character with choosen Widgets can be found at (All\Engine\Plugins\RTSUnitTemplate\Content\RTSUnitTemplate\Blueprints\Character)
+2. Example Widgets are at (All\Engine\Plugins\SideScroller3D\Content\SideScroller3D\Blueprints\Widgets)
+3. Example Character with choosen Widgets can be found at (All\Engine\Plugins\SideScroller3D\Content\SideScroller3D\Blueprints\Character)
 4. Widget hast to been set Space "Screen" and Draw at Desired Size to true. (In the Widget and in the Character BP)
 5. Widget Class has to choose a Blueprint (in the Character BP). Or just use the Parent Class like it is.
 
