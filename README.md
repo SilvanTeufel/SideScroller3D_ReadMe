@@ -56,10 +56,7 @@ Check the WeaponTable in Blueprints/Actors/WeaponTable
 ## Test Example Map
 
 Open Unreal Editor. Open folder (In Unreal Editor folder tab):
-All\Engine\Plugins\SideScroller3D\Content\SideScroller3D\Level\levelOne
-
-Open Unreal Editor. Open folder (In Unreal Editor folder tab):
-All\Engine\Plugins\SideScroller3D\Content\SideScroller3D\levelTwo
+All\Engine\Plugins\SideScroller3D\Content\SideScroller3D\Level\*
 
 ## Example Blueprints
 
