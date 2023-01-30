@@ -2,6 +2,9 @@
 This is the ReadMe of the SideScroller3D, a Plugin which is available in Unreal-Marketplace.
 This Documentation is still in Work, and will update on daily baseses.
 
+Classes:
+![image](https://user-images.githubusercontent.com/45244380/215572737-671031d4-00de-4c0a-9647-e7e700d8a22a.png)
+
 
 ## Download the Plugin
 
