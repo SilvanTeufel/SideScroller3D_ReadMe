@@ -51,6 +51,8 @@ Weapon will be Attached to Socket in Skeleton, please Name the Socket:
 
 You can also add a Preview Asset and Rotate/Move the Weapon according to its best Position.
 
+Check the WeaponTable in Blueprints/Actors/WeaponTable
+
 ## Test Example Map
 
 Open Unreal Editor. Open folder (In Unreal Editor folder tab):
