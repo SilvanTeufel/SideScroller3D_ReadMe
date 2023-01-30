@@ -236,8 +236,8 @@ Widget Setup
 |void SetSelected();       					| Sets the SelectedIcon selected           	|
 |void SetDeselected();      					| Sets the SelectedIcon delected            	|
 |void SpawnSelectedIcon();       				| Spawns the SelectedIcon         		|	
-|void SpawnGlider();							| Time Spent in UnitState NoMana			   	|
-|void DeSpawnGlider();							| Time Spent in UnitState NoMana			   	|
+|void SpawnGlider();						| Spawns the Glider			   	|
+|void DeSpawnGlider();						| Despawns the Glider			   	|
 	
 # ExtendedUnitBase
 
@@ -259,25 +259,25 @@ Widget Setup
 |float MaxMana = 100.f;        						| Max Mana of the Character					|
 |float ManaRestore = 1.f;						| This amount gets Restored each Time ManaRestoreTime is reached|
 |float ManaRestoreTime = 1.f;    					| ManaRestore gets added to Mana when ManaRestoreTime is reached|
-|float JumpTime = 0.5f;							| Time Spent in UnitState NoMana			   	|
-|float JumpPauseTime = 0.1f;						| Time Spent in UnitState NoMana			   	|
-|float JumpLoad = 0.f;							| Time Spent in UnitState NoMana			   	|
-|float JumpLoadIncrement = 2000.f;					| Time Spent in UnitState NoMana			   	|	
-|float MaxJumpLoad = 2000.f;						| Time Spent in UnitState NoMana			   	|
-|float JumpIconScaleDivider = 550.f;					| Time Spent in UnitState NoMana			   	|
-|float JumpLoadOffset = 100.f;						| Time Spent in UnitState NoMana			   	|
-|int JumpCounter = 0.f;							| Time Spent in UnitState NoMana			   	|
-|float JumpCounterResetTime = 6.f;					| Time Spent in UnitState NoMana			   	|
-|float JumpCounterTime = 0.f;						| Time Spent in UnitState NoMana			   	|
-|int MaxJumps = 3.f;							| Time Spent in UnitState NoMana			   	|
-|TSubclassOf<class AScatterMine> JumpMineClass;				| Time Spent in UnitState NoMana			   	|
-|float JumpMineSpawnDelta = 0.3f;					| Time Spent in UnitState NoMana			   	|
-|bool DropJumpMine = false;						| Time Spent in UnitState NoMana			   	|
-|TSubclassOf<class AGlider> GliderBaseClass;				| Time Spent in UnitState NoMana			   	|
-|class AGlider* Glider;							| Time Spent in UnitState NoMana			   	|
-|FVector GliderSpawnOffset = FVector(0, 0, -40);			| Time Spent in UnitState NoMana			   	|
-|bool GliderSpawned = false;						| Time Spent in UnitState NoMana			   	|
-|FVector JumpLocation;						| Time Spent in UnitState NoMana			   	|
+|float JumpTime = 0.5f;							| -			   	|
+|float JumpPauseTime = 0.1f;						| -			   	|
+|float JumpLoad = 0.f;							| -			   	|
+|float JumpLoadIncrement = 2000.f;					| -			   	|	
+|float MaxJumpLoad = 2000.f;						| -			   	|
+|float JumpIconScaleDivider = 550.f;					| -			   	|
+|float JumpLoadOffset = 100.f;						| -			   	|
+|int JumpCounter = 0.f;							| -			   	|
+|float JumpCounterResetTime = 6.f;					| -			   	|
+|float JumpCounterTime = 0.f;						| -			   	|
+|int MaxJumps = 3.f;							| -			   	|
+|TSubclassOf<class AScatterMine> JumpMineClass;				| -			   	|
+|float JumpMineSpawnDelta = 0.3f;					| -			   	|
+|bool DropJumpMine = false;						| -			   	|
+|TSubclassOf<class AGlider> GliderBaseClass;				| -			   	|
+|class AGlider* Glider;							| -			   	|
+|FVector GliderSpawnOffset = FVector(0, 0, -40);			| -			   	|
+|bool GliderSpawned = false;						| -			   	|
+|FVector JumpLocation;							| -			   	|
 
 	
 |Properties (BlueprintReadWrite)                  		|Note                         |
@@ -290,9 +290,9 @@ Widget Setup
 |UMaterialInterface* ProjectileMaterial;			| Comes from DataTable 			|
 |UStaticMesh* ProjectileMesh;					| Comes from DataTable 			|
 |FVector TeleportLocation;					| Current Location where to Teleport - comes from ControllerBase |	
-|float XAxisFixedPosition;					| Time Spent in UnitState NoMana			   	|
-|float YAxisFixedPosition;					| Time Spent in UnitState NoMana			   	|
-|FVector JumpLocation;						| Time Spent in UnitState NoMana			   	|
+|float XAxisFixedPosition;					| -			   	|
+|float YAxisFixedPosition;					| -			   	|
+|FVector JumpLocation;						| -			   	|
 	
 	
 |Functions (BlueprintCallable)                  		|Note                         |
