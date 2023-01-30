@@ -305,6 +305,15 @@ Widget Setup
 
 # CameraBase
 
+
+|CameraState (The Statemachine is in CameraControllerBase)        	|Note                         |
+|---------------------------------------------------------------|-----------------------------|
+|LockOnCharacter     UMETA(DisplayName = "LockOnCharacter")     | -	      |
+|ZoomOutPosition     UMETA(DisplayName = "ZoomOutPosition"),    | -         |
+|ZoomInPosition	     UMETA(DisplayName = "ZoomInPosition"),    	| -      |
+
+	
+	
 |Properties (EditAnyWhere + BlueprintReadWrite)                  	|Note                         |
 |-----------------------------------------------------------------------|-----------------------------|
 |USceneComponent* RootScene;      				| Pointer to the RootScene     	|
