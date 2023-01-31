@@ -143,7 +143,7 @@ BP_UnitBaseController
 
 Character Animation Statemachine
 1. Right Click Create Animation -> Animation Blueprint
-2. Choose Parent Class of the CharacterBase -> CharacterBaseAnimInstance / EnemyBase -> EnemyBaseAnimInstance / MouseBotBase -> MouseBotBaseAnimInstance
+2. Choose Parent Class of the UnitBase ->UnitBaseAnimInstance
 3. Choose Skeleton
 4. Copy Statemachine from (All\Engine\Plugins\SideScroller3D\Content\SideScroller3D\Blueprints\Animations)
 5. You can change the Time the Unit stuck in the Animation. This will also change Gameplay. To Adjust the Animation Times take a Look into the ControllerBase properties.
