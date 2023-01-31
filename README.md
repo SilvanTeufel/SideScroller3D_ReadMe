@@ -17,16 +17,16 @@ If the plugin is in another folder, you should copy it here.
 ## Install the Plugin
 
 Open Unreal Editor. Click Edit -> Plugins to open the plugin window.
-Search for TopDownRTSTemplate and put a check mark at it.
+Search for SideScroller3D and put a check mark at it.
 
 ## Import Settings
 
-RTSUnitTemplate/Document/Gameplay_Debugger_Backup_2022-11-14_102535_RTSUnitTemplate.ini
-RTSUnitTemplate/Document/Maps_&_Modes_Backup_2022-11-14_102333_RTSUnitTemplate.ini
+Gameplay_Debugger_Backup_2022-11-14_102535_RTSUnitTemplate.ini
+Maps_&_Modes_Backup_2022-11-14_102333_RTSUnitTemplate.ini
 
 ## Enhanced Keyboard Settings
 
-You can Change Inputs at: All\Engine\Plugins\TopDownRTSCamLib\Content\Blueprints\Controls
+You can Change Inputs at: All\Engine\Plugins\SideScroller3D\Content\Blueprints\Controls
 
 For GameplayTags you have to set AssetMangerClass in ProjectSettings (Restart Project after change):
 
