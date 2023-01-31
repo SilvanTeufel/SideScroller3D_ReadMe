@@ -20,8 +20,10 @@ Open Unreal Editor. Click Edit -> Plugins to open the plugin window.
 Search for SideScroller3D and put a check mark at it.
 
 ## Import Settings
+Download here from Github an Import in Unreal Editor -> ProjectSettings -> Import
 
 Gameplay_Debugger_Backup_2022-11-14_102535_RTSUnitTemplate.ini
+
 Maps_&_Modes_Backup_2022-11-14_102333_RTSUnitTemplate.ini
 
 ## Enhanced Keyboard Settings
