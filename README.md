@@ -21,7 +21,6 @@ Search for TopDownRTSTemplate and put a check mark at it.
 
 ## Import Settings
 
-RTSUnitTemplate/Document/Description_Backup_2022-11-14_102425_RTSUnitTemplate.ini
 RTSUnitTemplate/Document/Gameplay_Debugger_Backup_2022-11-14_102535_RTSUnitTemplate.ini
 RTSUnitTemplate/Document/Maps_&_Modes_Backup_2022-11-14_102333_RTSUnitTemplate.ini
 
